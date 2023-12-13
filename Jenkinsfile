@@ -5,24 +5,16 @@ pipeline {
         stage('premiere etape') {
             steps {
                 // Les étapes à exécuter dans la première étape
-                echo 'Ceci est la première étape.'
+                sh "docker-compose down"
+                sh "docker-compose up -d"
             }
         }
-
-        stage('deuxième étape') {
-            steps {
-                // Les étapes à exécuter dans la deuxième étape
-                echo 'Ceci est la deuxième étape.'
-            }
-        }
-
-        // Ajoutez d'autres étapes au besoin
     }
 
-    // Post-build actions, notifications, etc.
-    post {
-        always {
-            // Actions à effectuer après l'exécution de toutes les étapes
-        }
-    }
+    // You can add more stages or other configurations here
+
+    // No need for the empty always block, you can remove it
+    // always {
+    //     // Actions à effectuer après l'exécution de toutes les étapes
+    // }
 }
