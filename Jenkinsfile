@@ -15,6 +15,6 @@ pipeline {
 
     // No need for the empty always block, you can remove it
     // always {
-    //     // Actions à effectuer après l'exécution de toutes les étapes
+    
     // }
 }
