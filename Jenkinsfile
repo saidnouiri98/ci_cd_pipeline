@@ -2,15 +2,21 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Build and Deploy') {
+        stage('clone') {
             steps {
-                script {
-                    // Build and run Docker Compose
-                    sh 'docker-compose down'
-                    sh 'docker-compose up -d'
-                }
+                // Les étapes à exécuter dans la première étape
+                sh "rm -rf *"
+                sh "git clone https://github.com/saidnouiri98/ci_cd_pipeline.git"
+            }
+        }
+
+        stage('build and deploy') {
+            steps {
+                // Les étapes à exécuter dans la première étape
+                sh "docker-compose down"
+                sh "docker-compose up -d"
             }
         }
     }
+
 }
