@@ -5,8 +5,8 @@ pipeline {
         stage('premiere etape') {
             steps {
                 // Les étapes à exécuter dans la première étape
-                sh "docker-compose down"
-                sh "docker-compose up -d"
+                sh "docker compose down"
+                sh "docker compose up -d"
             }
         }
     }
