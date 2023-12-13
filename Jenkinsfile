@@ -2,19 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('premiere etape') {
+        stage('Checkout') {
             steps {
-                // Les étapes à exécuter dans la première étape
-                sh "docker compose down"
-                sh "docker compose up -d"
+                script {
+                    // Checkout the source code from the repository
+                    checkout scm
+                }
+            }
+        }
+
+        stage('Build and Deploy') {
+            steps {
+                script {
+                    // Build and run Docker Compose
+                    sh 'docker-compose down'
+                    sh 'docker-compose up -d'
+                }
             }
         }
     }
 
-    // You can add more stages or other configurations here
-
-    // No need for the empty always block, you can remove it
-    // always {
-    
-    // }
+    post {
+        always {
+            // Cleanup or additional actions if needed
+        }
+    }
 }
