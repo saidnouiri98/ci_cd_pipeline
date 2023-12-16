@@ -22,7 +22,7 @@ pipeline {
 
             steps {
 
-                git Clone https://github.com/saidnouiri98/ci_cd_pipeline.git
+                ssh "git Clone https://github.com/saidnouiri98/ci_cd_pipeline.git"
                 ssh "cd ci_cd_pipeline"
                 ssh "ls -all"
 
