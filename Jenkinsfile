@@ -1,19 +1,35 @@
 pipeline {
+
     agent any
 
     stages {
-        stage('Build and Deploy') {
+
+        stage('Cleanup') {
+
             steps {
-                script {
-                    // Navigate to the project directory
-                    dir('ci_cd_pipeline') {
-                // Build and run Docker Compose
-                //sh 'docker-compose up -d'
-                sh 'docker compose up -d'
+
+                preSCMBuildStep {
+
+                    sh "rm -rf *"
+
+                }
+
             }
+
         }
-                
-    }
+
+        stage('Clone') {
+
+            steps {
+
+                git Clone https://github.com/saidnouiri98/ci_cd_pipeline.git
+                ssh "cd ci_cd_pipeline"
+                ssh "ls -all"
+
+            }
+
         }
+
     }
+
 }
