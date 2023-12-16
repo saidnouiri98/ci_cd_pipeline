@@ -16,12 +16,8 @@ pipeline {
                 script {
                     // Use 'git' step to clone the repository
                     git branch: 'main', url: 'https://github.com/saidnouiri98/ci_cd_pipeline.git'
-
-                    // Move into the cloned directory
-                    dir('ci_cd_pipeline') {
                         // List files in the directory
                         ssh 'docker compose up -d'
-                    }
                 }
             }
         }
