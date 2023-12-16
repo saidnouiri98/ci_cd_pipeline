@@ -21,6 +21,7 @@ pipeline {
                     dir('ci_cd_pipeline') {
                         // List files in the directory
                         sh 'ls'
+                        ssh 'docker compose up -d'
                     }
                 }
             }
